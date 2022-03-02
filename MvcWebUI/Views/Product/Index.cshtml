@@ -1,0 +1,30 @@
+﻿@model ProductListViewModel
+@{ 
+    ViewBag.Title = "Products";
+}
+<table class="table ">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ürün</th>
+            <th>Kategori</th>
+            <th>Açıklama</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.ProductName</td>
+                <td>@product.CategoryId</td>
+                <td>@product.QuantityPerUnit</td>
+                <td>@product.UnitPrice</td>
+                <td>@product.UnitsInStock</td>
+                <td><a class="btn btn-sm btn-success" asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@product.ProductId">Sepete Ekle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
